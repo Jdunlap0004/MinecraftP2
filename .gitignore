@@ -1,0 +1,7 @@
+#Terraform Information to keep private
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.tfvars
+.env
+*.pem
