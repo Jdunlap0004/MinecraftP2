@@ -1,0 +1,39 @@
+---
+- name: Configure Minecraft Server
+  hosts: minecraft
+  become: yes
+
+  tasks:
+    - name: Install Docker
+      yum:
+        name: docker
+        state: present
+
+    - name: Start Docker
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Create Minecraft service
+      copy:
+        dest: /etc/systemd/system/minecraft.service
+        content: |
+          [Unit]
+          Description=Minecraft Server
+          After=docker.service
+
+          [Service]
+          Restart=always
+          ExecStart=/usr/bin/docker run --rm -p 25565:25565 -e EULA=TRUE -v /opt/minecraft:/data --name mc itzg/minecraft-server
+          ExecStop=/usr/bin/docker stop mc
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Start Minecraft
+      systemd:
+        name: minecraft
+        enabled: yes
+        state: started
+        daemon_reload: yes
