@@ -13,9 +13,9 @@ We will set up a fully automated configuration and setup of a Minecraft server u
 
 ### Tools
 
-- [Terraform](https://developer.hashicorp.com/terraform/install) >= 1.5
-- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html) >= 9.0
-- [nmap](https://nmap.org/download.html) (for verification)
+- [Terraform](https://developer.hashicorp.com/terraform/install)
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/index.html)
+- [nmap](https://nmap.org/download.html)
 - [AWS CLI](https://aws.amazon.com/cli/)
 
 ### Credentials
