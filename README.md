@@ -31,9 +31,9 @@ No environment variables are required. AWS credentials are read automatically fr
 
 ```mermaid
 graph TD
-    A[Local Machine] -->|terraform apply| B[AWS EC2 Instance]
-    A -->|ansible-playbook| B
+    A[In Local Machine] -->|run terraform apply| B[Creates the AWS EC2 Instance]
+    A -->|ansible playbook runs tasks| B
     B -->|installs| C[Docker]
     C -->|runs| D[Minecraft Container]
-    D -->|port 25565| E[Players / nmap]
+    D -->|on default port 25565| E[Minecraft Server Connection]
 ```
